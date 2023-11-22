@@ -1,0 +1,46 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.landing-page-image {
+    background-image: url('https://images.template.net/wp-content/uploads/2015/11/24201158/Pokemon-Style-Charactor-JPEG-Download.jpg');
+    background-size: cover;
+    background-position: bottom;
+    height: 100vh;
+    
+    
+}
+
+.landing-page-button {
+    position: absolute;
+    left: 160px;
+    bottom: 260px;
+    font-size: 50px;
+    padding: 20px 40px;
+    background-color: rgba(221, 226, 231, 0.5);
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    object-fit: cover;
+}
+
+.landing-page-button:hover {
+    background-color: rgba(221, 226, 231, 0.642);
+}
+
+/* Estilos para pantallas más pequeñas (por ejemplo, dispositivos móviles) */
+@media (max-width: 768px) {
+    .image {
+        background-size: auto; /* Ajusta el tamaño de la imagen según el contenido */
+        height: auto; /* Permite que la altura se ajuste automáticamente */
+        padding: 20px; /* Agrega espacio alrededor del contenido */
+        text-align: center; /* Centra el contenido */
+    }
+
+    .boton {
+        position: static; /* Restaura la posición estática en el flujo del documento */
+        margin-top: 20px; /* Agrega margen superior para separar el botón del contenido */
+    }
+}

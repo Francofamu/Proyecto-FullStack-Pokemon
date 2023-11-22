@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+  }
+  
+  .image-container {
+    flex: 1;
+    margin-right: 60px;
+    margin-left: 20px;
+  }
+  
+  .card-image-detail {
+    width: 600px;
+    max-height: 600px;
+    border-radius: 10px;
+  }
+  
+  .information-container {
+    flex: 1;
+    justify-content:space-between;
+}
+
+.detail-name {
+    margin-top: 0px;
+    text-align: center;
+}
+.id{
+    text-align: center;
+    margin-bottom: 0%px;
+}

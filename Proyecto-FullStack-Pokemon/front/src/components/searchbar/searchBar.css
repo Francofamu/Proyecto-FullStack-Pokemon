@@ -1,0 +1,11 @@
+.search-box input{
+text-align: center;
+margin-right: 10px;
+border-radius: 2em;
+border-style:none;
+}
+
+.search-box button{
+border-radius: 2em;
+border-style: none;
+}

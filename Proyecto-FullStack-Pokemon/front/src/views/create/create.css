@@ -1,0 +1,36 @@
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.errors {
+  margin-top: auto;
+  padding: auto;
+  font-size: small;
+  color: red;
+}
+
+input {
+  text-align: center;
+  margin: auto;
+  padding: auto;
+}
+
+.submitButton {
+  padding: 10px 20px;
+  margin-top: 15px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.submitButton:hover {
+  background-color: #45a049;
+}

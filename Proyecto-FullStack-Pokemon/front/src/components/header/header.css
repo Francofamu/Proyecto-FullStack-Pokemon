@@ -1,0 +1,55 @@
+.header {
+	padding: 5px 0;
+	background-color: white;
+  }
+  
+  .wrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0 auto;
+	width: 95%;
+	max-width: 1300px;
+	height: 100px; /* Ajusta la altura del wrapper según tus necesidades */
+  }
+  
+  .header-logo-home,
+  .header-logo-create {
+	display: flex;
+	align-items: center;
+	height: 100%; /* Ajusta la altura de los contenedores según tus necesidades */
+  }
+  
+  .header-button-home img {
+	display: block;
+	height: auto; /* Ajusta la altura de las imágenes según tus necesidades */
+	max-width: 10em; /* Ajusta el tamaño máximo de la imagen */
+  }
+
+
+  .header-button-create img {
+	display: block;
+	height: 90px; /* Ajusta la altura de las imágenes según tus necesidades */
+	max-width: 10em; /* Ajusta el tamaño máximo de la imagen */
+  }
+  
+  
+  .header-logo-create {
+	margin-left: auto; /* Mueve el logo-create al extremo derecho */
+  }
+  
+  /* Estilo básico para los enlaces (puedes personalizar según tus necesidades) */
+  .header-button-home,
+  .header-button-create {
+	text-decoration: none;
+	color: #000000;
+	font-size: 18px;
+	margin: 0 10px;
+  }
+  
+  /* Hover effect (puedes personalizar según tus necesidades) */
+  .header-button-home:hover,
+  .header-button-create:hover {
+	text-decoration: underline;
+  }
+  

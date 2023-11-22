@@ -1,0 +1,15 @@
+.cards-container {
+    display: grid;
+    padding: 20px; /* Reduce el espacio alrededor del contenedor */
+    grid-template-columns: 1fr; /* Cambia a una sola columna en pantallas pequeñas */
+    grid-gap: 20px; /* Reduce el espacio entre las tarjetas */
+    border-radius: 10px; /* Reduce el radio del borde */
+    border: none; /* Establece un borde */
+}
+
+/* Estilos para pantallas medianas y más grandes */
+@media (min-width: 768px) {
+    .cards-container {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); /* Usa un diseño de cuadrícula adaptable */
+    }
+}
