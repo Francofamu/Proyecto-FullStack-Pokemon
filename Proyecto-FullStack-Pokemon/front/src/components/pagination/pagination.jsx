@@ -9,24 +9,43 @@ const Pagination = ({ pokemonPage, Pokemons, pagination, page }) => {
     }
 
   return (
-   <div>
-            <div>
-                <button style={page <= 1 ?
-                    {display: 'none'} : {}} onClick={()=>pagination(page-1)}>Prev</button>
-            </div>
-            
-            <div>
-                <button style={page >= pageNumbers.length ?
-                    {display: 'none'} : {}} onClick={()=>pagination(page+1)}>Next</button>
-            </div><br/>
-                {pageNumbers && pageNumbers.map((pageNumber)=>(
-                    pageNumbers.length === 1 ? null :
-                    <div key={pageNumber}>
-                        <button style={page === pageNumber ?
-                            {background:"transparent",color:"#273314"} : {}} onClick={()=>pagination(pageNumber)}>{pageNumber}</button>
-                    </div>
-                ))}
-        </div>
+  <div className="pagination-container">
+    <div className="pagination-buttons">
+      <button
+        style={page <= 1 ? { display: 'none' } : {}}
+        onClick={() => pagination(page - 1)}
+      >
+        Prev
+      </button>
+      {pageNumbers &&
+        pageNumbers.map((pageNumber) => (
+          pageNumbers.length === 1 ? null : (
+            <button
+              key={pageNumber}
+              style={
+                page === pageNumber
+                  ? { background: 'transparent', color: '#273314' }
+                  : {}
+              }
+              onClick={() => pagination(pageNumber)}
+            >
+              {pageNumber}
+            </button>
+          )
+        ))}
+      <button
+        style={
+          page >= pageNumbers.length
+            ? { display: 'none' }
+            : {}
+        }
+        onClick={() => pagination(page + 1)}
+      >
+        Next
+      </button>
+    </div>
+  </div>
+  
   );
 };
 

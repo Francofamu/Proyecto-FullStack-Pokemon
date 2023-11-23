@@ -22,12 +22,36 @@ function rootReducer (state = initialState, action) {
                 ...state,
                 types: action.payload,
             }
-
-        case 'POST_POKEMON':
-            return {
+            
+        case 'GET_POKEMON_BY_NAME':
+            const addPokemonByName = state.filteredPokemons;
+            if(addPokemonByName.filter((p)=>p.name === action.payload[0].name).length > 0) {
+            } else {
+                addPokemonByName.push(action.payload[0]);
+            }
+            return{
                 ...state,
+                filteredPokemons: action.payload,
             }
 
+        case 'FILTER_BY_TYPE': {
+            const filteredByTypes = state.allPokemons.filter((pokemon) => pokemon.types.includes(action.payload));
+            if (action.payload === "all") {
+                return {...state,filteredPokemons: state.allPokemons}
+            } 
+            else {
+                return {...state,filteredPokemons: filteredByTypes,};
+            }
+        }   
+        
+        case 'FILTER_BY_ORIGIN':
+            const pokemonsByOrigin= [...state.allPokemons].filter((p=>!p.createdInDb))
+            const filteredByCreatedInDb = [...state.allPokemons].filter((p=>p.createdInDb))
+            if (action.payload === "all") return {...state, filteredPokemons: state.allPokemons}
+            if (action.payload === "originals") return {...state, filteredPokemons: pokemonsByOrigin}
+            if (action.payload === "created by User") return {...state, filteredPokemons: filteredByCreatedInDb}
+        
+            
         case 'ORDER_BY':
             let sortedPokemon = [...state.filteredPokemons];
             
@@ -46,43 +70,7 @@ function rootReducer (state = initialState, action) {
                 ...state,
                 filteredPokemons: sortedPokemon
             };
-              
-
-        case 'FILTER_BY_TYPE': {
-            const filteredByTypes = state.allPokemons.filter((pokemon) => pokemon.types.includes(action.payload));
-            if (action.payload === "all") {
-                return {
-                    ...state,
-                    filteredPokemons: state.allPokemons
-                }
-            } else {
-                return {
-                    ...state,
-                    filteredPokemons: filteredByTypes,
-                };
-            }
-        }
-
-        case 'FILTER_BY_ORIGIN':
-            const pokemonsByOrigin= state.allPokemons;
-            const filteredOrigin = action.payload === 'created by User' ?
-                pokemonsByOrigin.filter((p)=>p.createdInDb) : pokemonsByOrigin.filter((p=>!p.createdInDb))
-            return{
-                ...state,
-                filteredPokemons: filteredOrigin
-            }
-
-        case 'GET_POKEMON_BY_NAME':
-            const addPokemonByName = state.filteredPokemons;
-            if(addPokemonByName.filter((p)=>p.name === action.payload[0].name).length > 0) {
-            } else {
-                addPokemonByName.push(action.payload[0]);
-            }
-            return{
-                ...state,
-                filteredPokemons: action.payload,
-            }
-
+            
         case "GET_DETAILS":
             return{
                 ...state,
@@ -94,13 +82,17 @@ function rootReducer (state = initialState, action) {
                 ...state,
                 details: []
             }
-
+    
         case 'RESTORE':
             return{
                 ...state,
                 filteredPokemons: state.allPokemons,
             }
-
+                
+        case 'POST_POKEMON':
+            return {
+                ...state,
+            }
         default: return state;
     }
 }

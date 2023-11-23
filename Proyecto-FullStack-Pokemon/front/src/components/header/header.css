@@ -13,6 +13,11 @@
 	height: 100px; /* Ajusta la altura del wrapper según tus necesidades */
   }
   
+  .navbar{
+	margin: 0px auto;
+
+  }
+  
   .header-logo-home,
   .header-logo-create {
 	display: flex;

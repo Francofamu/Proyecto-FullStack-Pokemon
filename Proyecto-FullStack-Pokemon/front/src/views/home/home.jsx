@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 
 import Header from "../../components/header/header"
-import Navbar from "../../components/navbar/navbar"
 import Pagination from "../../components/pagination/pagination"
 import Cards from "../../components/cards/Cards";
 import "./home.css";
@@ -32,32 +31,11 @@ function Home() {
     };
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   if (filteredDogs.length == 0) setFilterDog(allDogs);
-  //   else {
-  //     setFilterDog(filteredDogs);
-  //   }
-  // }, [allDogs, filteredDogs]);
-
-  
-  // const indexOfLastDog = currentPage * dogsPerPage;
-  // const indexOfFirstDog = indexOfLastDog - dogsPerPage;
-  // const currentDogs = filterDog.slice(indexOfFirstDog, indexOfLastDog);
-
-  // const handlePrevPage = () => {
-  //   setCurrentPage((prevPage) => prevPage - 1);
-  // };
-
-  // const handleNextPage = () => {
-  //   setCurrentPage((prevPage) => prevPage + 1);
-  // };
-
   return (
     <div>
       {/* <img src="https://66.media.tumblr.com/9697ebbc4887dc57620c50a12f24c61d/tumblr_nc1rokF7r31s1rd1xo1_500.gif"></img> */}
       
       <Header />
-      <Navbar />
       <Pagination 
       pokemonPage={pokemonPage}
       Pokemons={allPokemons.length}

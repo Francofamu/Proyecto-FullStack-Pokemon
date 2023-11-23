@@ -3,7 +3,6 @@ import axios from 'axios';
 export function getPokemons(){
     return async function(dispatch){
         const pokemons = await axios.get('http://localhost:3001/pokemons');
-        // console.log('Action getPokemons (API + DB)--->', pokemons.data)
         return dispatch({
             type: 'GET_POKEMONS',
             payload: pokemons.data
@@ -22,24 +21,15 @@ export function getTypes(){
     }
 }
 
-export function postPokemon(payload){
+export function getPokemonByName(name){
     return async function(dispatch){
-        try{
-            await axios.post('http://localhost:3001/pokemons', payload);
+            const pokemon = await axios.get(`http://localhost:3001/pokemons?name=${name}`);
+            console.log(pokemon.data)
             return dispatch({
-                type: 'POST_POKEMON',
+                type: 'GET_POKEMON_BY_NAME',
+                payload: pokemon.data
             })
-        } catch(error) {
-            console.log(error)
-        }
-    }
-}
-
-
-export function orderBy(payload){
-    return{
-        type: 'ORDER_BY',
-        payload
+    
     }
 }
 
@@ -58,15 +48,10 @@ export function filterByOrigin(payload){
     }
 }
 
-export function getPokemonByName(name){
-    return async function(dispatch){
-            const pokemon = await axios.get(`http://localhost:3001/pokemons?name=${name}`);
-            console.log(pokemon.data)
-            return dispatch({
-                type: 'GET_POKEMON_BY_NAME',
-                payload: pokemon.data
-            })
-    
+export function orderBy(payload){
+    return{
+        type: 'ORDER_BY',
+        payload
     }
 }
 
@@ -95,4 +80,18 @@ export function restore(){
         type: 'RESTORE',
     }
 }
+
+export function postPokemon(payload){
+    return async function(dispatch){
+        try{
+            await axios.post('http://localhost:3001/pokemons', payload);
+            return dispatch({
+                type: 'POST_POKEMON',
+            })
+        } catch(error) {
+            console.log(error)
+        }
+    }
+}
+
 

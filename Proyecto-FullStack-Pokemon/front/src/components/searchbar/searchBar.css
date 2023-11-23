@@ -1,11 +1,17 @@
-.search-box input{
+.search-box {
 text-align: center;
-margin-right: 10px;
-border-radius: 2em;
-border-style:none;
+margin: 0px auto;
 }
 
 .search-box button{
+background-color: rgba(200, 200, 200, 0.5);
+border: none;
+border-radius: 5px;
+padding: 5px;
+margin-left: 5px;
+}
+
+.search-box-button input{
 border-radius: 2em;
-border-style: none;
+border-style:none;
 }

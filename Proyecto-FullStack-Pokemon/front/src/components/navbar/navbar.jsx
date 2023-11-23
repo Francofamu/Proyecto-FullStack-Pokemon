@@ -9,13 +9,11 @@ const Navbar = ({ onSearch }) => {
   const dispatch = useDispatch();
   const types = useSelector((state) => state.types);
   const [selectedType, setSelectedType] = useState('');
-  const [order, setOrder] = useState('');
 
 
   const handleSort = (e) => {
     e.preventDefault();
     dispatch(orderBy(e.target.value));
-    setOrder(`Alphabetical ${e.target.value} order`);
     e.target.value = 'default';
 }
 
@@ -80,7 +78,6 @@ const Navbar = ({ onSearch }) => {
               <option value="originals">Originals...</option>
               <option value="created by User">Created By User...</option>
             </select>
-            {order.length > 0 && <span>{order}</span>}
           </form>
         </div>
       </div>

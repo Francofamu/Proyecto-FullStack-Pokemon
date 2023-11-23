@@ -1,6 +1,5 @@
-import React, {useState, useEffect} from "react";
-// import { useHistory } from "react-router-dom";
-import { postPokemon, getTypes, getPokemonByName } from "../../redux/actions";
+import {useState, useEffect} from "react";
+import { postPokemon, getTypes } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "../../components/header/header";
 import validations from "./CreatePokemonValidations";
@@ -10,7 +9,6 @@ const Create = () => {
     const dispatch = useDispatch();
     const types = useSelector((state)=>state.types);
     const pokemonNames = useSelector((state)=>state.allPokemons.map((pokemon)=>pokemon.name));
-    // const history = useHistory();
     const [errors, setErrors] = useState({});
     const [input, setInput] = useState({
         name: '',
@@ -39,18 +37,7 @@ const Create = () => {
     function handleSelect(event) {
         if(input.types.filter(type=> type === event.target.value).length) {
             input.types.pop();
-            Swal.fire({
-                title: 'Ups!',
-                text: 'You have already chosen this type',
-                icon: 'warning',
-                confirmButtonText: 'Got it!'
-            })
-            // alert('You have already chosen this type');
         }
-        // if(input.types.length>2) {                   *ya no necesito este bloque porque puse disabled las opc del select
-        //     input.types.pop();
-        //     alert('You can choose only two types')
-        // }
         setInput({
             ...input,
             types: [...input.types, event.target.value]
@@ -72,159 +59,138 @@ const Create = () => {
         !input.img ? setInput({...input.img='https://images.wikidexcdn.net/mwuploads/wikidex/0/02/latest/20090125150654/Pok%C3%A9_Ball_%28Ilustraci%C3%B3n%29.png'}) : setInput(input);
         if(Object.keys(errors).length === 0 && input.name.length && input.types.length > 0) {
             dispatch(postPokemon(input));
-            dispatch(getPokemonByName(input.name));
-            history.push("/pokemonaddedcards")
-            Swal.fire({
-                title: 'Congrats!',
-                text: 'Your Pokemon has been created',
-                icon: 'success',
-                confirmButtonText: 'Cool!'
-            })
-            // alert('Your Pokemon has been created')
-        } else {
-            Swal.fire({
-                title: 'Sorry',
-                text: 'You must complete all the fields to continue...',
-                icon: 'info',
-                confirmButtonText: `I'll do it!`,
-            })
-            // alert('Please complete all the fields to continue...')
-            setInput(input)
-        }
+        } 
     }
 
     return(
-        
-        <div>
+
+        <div >
             <Header/>
+            <div>
+                <div>
+                    <h1>CREATE YOUR POKEMON</h1>
+                </div>
+                <form onSubmit={(event)=>handleSubmit(event)}>
+                    <div>
+                        <label>POKEMON NAME</label>
+                        <input
+                            type='text'
+                            value={input.name.toUpperCase()}
+                            name= 'name'
+                            autoComplete='off'
+                            spellCheck="false"
+                            onChange={handleChange}/>
+                        </div>
+                        {errors.name && (<p>{errors.name}</p>)}
+                    <div>
+                        <label>Hit Points (HP) </label>
+                        <input
+                            type='range'
+                            min='1'
+                            max='140'
+                            value={input.hp}
+                            name= 'hp'
+                            onChange={handleChange}/>
+                            <span> {input.hp}</span>
+                    {errors.hp && (<p>{errors.hp}</p>)}
+                    </div>
+                    <div>
+                        <label>Attack </label>
+                        <input
+                            type='range'
+                            value={input.attack}
+                            min='1'
+                            max='150'
+                            name= 'attack'
+                            onChange={handleChange}/>
+                            <span> {input.attack}</span>
+                    {errors.attack && (<p>{errors.attack}</p>)}
+                    </div>
+                    <div>
+                        <label>Defense </label>
+                        <input
+                            type='range'
+                            value={input.defense}
+                            min='1'
+                            max='150'
+                            name= 'defense'
+                            onChange={handleChange}/>
+                            <span> {input.defense}</span>
+                    {errors.defense && (<p>{errors.defense}</p>)}
+                    </div>
+                    <div>
+                        <label>Speed </label>
+                        <input
+                            type='range'
+                            value={input.speed}
+                            min='1'
+                            max='100'
+                            name= 'speed'
+                            onChange={handleChange}/>
+                            <span> {input.speed}</span>
+                    {errors.speed && (<p>{errors.speed}</p>)}
+                    </div>
+                    <div>
+                        <label>Height </label>
+                        <input
+                            type='range'
+                            value={input.height}
+                            min='1'
+                            max='80'
+                            name= 'height'
+                            onChange={handleChange}/>
+                            <span> {input.height}</span>
+                    {errors.height && (<p>{errors.height}</p>)}
+                    </div>
+                    <div>
+                        <label>Weight </label>
+                        <input
+                            type='range'
+                            value={input.weight}
+                            min='1'
+                            max='3000'
+                            name= 'weight'
+                            onChange={handleChange}/>
+                            <span> {input.weight}</span>
+                    {errors.weight && (<p>{errors.weight}</p>)}
+                    </div>
+                    <div>
+                        <select value='default' onChange={(event)=>handleSelect(event)}>
+                            <option disabled value='default'>Select Types</option>
+                            {
+                                types.map((type)=>(<option value ={type.name} key={type.name}>{type.name.charAt(0).toUpperCase()+type.name.slice(1)}</option>))
+                            }
+                        </select>
+                    </div>
+                    <div>
+                        {input.types.map((selected)=>(
+                            <div key={selected}>
+                                <p>{selected.charAt(0).toUpperCase()+selected.slice(1)}</p>
+                                <button id={selected} onClick={handleClick}>x</button>
+                            </div>
+                            ))
+                        }
+                    {errors.types && (<p>{errors.types}</p>)}
+                    </div>
+                    {input.img && (<div><img src={input.img} alt='img not found'/></div>)}
+                    <div>
+                        <label>URL Image (optional):</label>
+                        <input
+                            alt='image not found'
+                            value={input.img}
+                            name= 'img'
+                            pattern="https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$"
+                            title="image URL"
+                            placeholder=' paste url image...'
+                            autoComplete='off'
+                            spellCheck="false"
+                            onChange={handleChange}/>
+                    </div>
+                    <button type='submit'>Create Pokemon</button>
+                </form>
+                <img src="https://images.wikidexcdn.net/mwuploads/wikidex/0/0a/latest/20141130014622/Profesor_Oak_%28XY%29.png" alt="profesorOak" />
+            </div>
         </div>
-    //     <div className={s.createPokemon}>
-    //         <div className={s.createCard}>
-    //         <h1 className={s.title}>CREATE YOUR POKEMON</h1>
-    //         <form className={s.createForm} onSubmit={(event)=>handleSubmit(event)}>
-    //             <div className={s.createName}>
-    //                 <label>POKEMON NAME</label>
-    //                 <input
-    //                     type='text'
-    //                     value={input.name.toUpperCase()}
-    //                     name= 'name'
-    //                     autoComplete='off'
-    //                     spellCheck="false"
-    //                     className={s.inputName}
-    //                     onChange={handleChange}/>
-    //                 </div>
-    //                 {errors.name && (<p className={s.errorName}>{errors.name}</p>)}
-    //             <div className={s.createStats}>
-    //                 <label>Hit Points (HP) </label>
-    //                 <input
-    //                     type='range'
-    //                     min='1'
-    //                     max='140'
-    //                     value={input.hp}
-    //                     name= 'hp'
-    //                     onChange={handleChange}/>
-    //                     <span className={s.inputStats}> {input.hp}</span>
-    //             {errors.hp && (<p className={s.errors}>{errors.hp}</p>)}
-    //             </div>
-    //             <div className={s.createStats}>
-    //                 <label>Attack </label>
-    //                 <input
-    //                     type='range'
-    //                     value={input.attack}
-    //                     min='1'
-    //                     max='150'
-    //                     name= 'attack'
-    //                     onChange={handleChange}/>
-    //                     <span className={s.inputStats}> {input.attack}</span>
-    //             {errors.attack && (<p className={s.errors}>{errors.attack}</p>)}
-    //             </div>
-    //             <div className={s.createStats}>
-    //                 <label>Defense </label>
-    //                 <input
-    //                     type='range'
-    //                     value={input.defense}
-    //                     min='1'
-    //                     max='150'
-    //                     name= 'defense'
-    //                     onChange={handleChange}/>
-    //                     <span className={s.inputStats}> {input.defense}</span>
-    //             {errors.defense && (<p className={s.errors}>{errors.defense}</p>)}
-    //             </div>
-    //             <div className={s.createStats}>
-    //                 <label>Speed </label>
-    //                 <input
-    //                     type='range'
-    //                     value={input.speed}
-    //                     min='1'
-    //                     max='100'
-    //                     name= 'speed'
-    //                     onChange={handleChange}/>
-    //                     <span className={s.inputStats}> {input.speed}</span>
-    //             {errors.speed && (<p className={s.errors}>{errors.speed}</p>)}
-    //             </div>
-    //             <div className={s.createStats}>
-    //                 <label>Height </label>
-    //                 <input
-    //                     type='range'
-    //                     value={input.height}
-    //                     min='1'
-    //                     max='80'
-    //                     name= 'height'
-    //                     onChange={handleChange}/>
-    //                     <span className={s.inputStats}> {input.height}</span>
-    //             {errors.height && (<p className={s.errors}>{errors.height}</p>)}
-    //             </div>
-    //             <div className={s.createStats}>
-    //                 <label>Weight </label>
-    //                 <input
-    //                     type='range'
-    //                     value={input.weight}
-    //                     min='1'
-    //                     max='3000'
-    //                     name= 'weight'
-    //                     onChange={handleChange}/>
-    //                     <span className={s.inputStats}> {input.weight}</span>
-    //             {errors.weight && (<p className={s.errors}>{errors.weight}</p>)}
-    //             </div>
-    //             <div className={s.createTypes}>
-    //                 <select className={s.selectValues} value='default' onChange={(event)=>handleSelect(event)}>
-    //                     <option disabled value='default'>Select up to two Types</option>
-    //                     {
-    //                         input.types.length < 2 ?
-    //                         types.map((type)=>(<option className={s.optionType} value ={type.name} key={type.name}>{type.name.charAt(0).toUpperCase()+type.name.slice(1)}</option>)) :
-    //                         <option value ='full' disabled>{`There are two chosen`}</option>
-    //                     }
-    //                 </select>
-    //             </div>
-    //             <div className={s.createTypesSel}>
-    //                 {input.types.map((selected)=>(
-    //                     <div className={s.selectedType} key={selected}>
-    //                         <p>{selected.charAt(0).toUpperCase()+selected.slice(1)}</p>
-    //                         <button  className={s.deleteType} id={selected} onClick={handleClick}>x</button>
-    //                     </div>
-    //                     ))
-    //                 }
-    //             {errors.types && (<p className={s.errors}>{errors.types}</p>)}
-    //             </div>
-    //             {input.img && (<div className={s.imgContainer}><img className={s.urlImg} src={input.img} alt='img not found'/></div>)}
-    //             <div className={s.createImg}>
-    //                 <label>URL Image (optional):</label>
-    //                 <input
-    //                     alt='image not found'
-    //                     value={input.img}
-    //                     name= 'img'
-    //                     pattern="https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$"
-    //                     title="image URL"
-    //                     placeholder=' paste url image...'
-    //                     autoComplete='off'
-    //                     spellCheck="false"
-    //                     className={s.inputImg}
-    //                     onChange={handleChange}/>
-    //             </div>
-    //             <button type='submit' className={s.createBtn}>Create Pokemon</button>
-    //         </form>
-    //         </div>
-    //     </div>
     )
 }
 

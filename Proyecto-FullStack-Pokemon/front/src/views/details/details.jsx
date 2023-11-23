@@ -25,7 +25,12 @@ const Detail = () => {
   return (
     <div>
       <Header />
-      <div className="container">
+      <div className="card-container-detail">
+        <div className="head-detail-container">  
+          <h2 className="id">#{pokemonDetail[0].id}</h2>
+          <h1 className="detail-name">{pokemonDetail[0].name}</h1>
+          <img className="pokeball-image" src="https://i.pinimg.com/originals/e3/4f/ac/e34facd1e788d09f2bfcbc2f37f548ce.png"/>
+        </div>
         <div className="image-container">
           <img
             className="card-image-detail"
@@ -34,15 +39,13 @@ const Detail = () => {
           />
         </div>
         <div className="information-container">
-          <h2 className="id">{pokemonDetail[0].id}</h2>
-          <h1 className="detail-name">{pokemonDetail[0].name}</h1>
-          <h3 className="detail-name">HP: {pokemonDetail[0].hp}</h3>
-          <h3 className="detail-name">Attack: {pokemonDetail[0].attack}</h3>
-          <h3 className="detail-name">Defense: {pokemonDetail[0].defense}</h3>
-          <h3 className="detail-name">Speed: {pokemonDetail[0].speed}</h3>
-          <h3 className="detail-name">Height: {pokemonDetail[0].height}</h3>
-          <h3 className="detail-name">Weight: {pokemonDetail[0].weight}</h3>
-          <h3 className="detail-info">Types: {pokemonDetail[0].types}</h3>
+          <h3 className="detail-types">{pokemonDetail[0].types.join("  ")}</h3>
+          <h3 className="detail-info">HP: {pokemonDetail[0].hp}</h3>
+          <h3 className="detail-info">Attack: {pokemonDetail[0].attack}</h3>
+          <h3 className="detail-info">Defense: {pokemonDetail[0].defense}</h3>
+          <h3 className="detail-info">Speed: {pokemonDetail[0].speed}</h3>
+          <h3 className="detail-info">Height: {pokemonDetail[0].height}</h3>
+          <h3 className="detail-info">Weight: {pokemonDetail[0].weight}</h3>
         </div>
       </div>
     </div>

@@ -1,40 +1,40 @@
 .navbar {
-	position: relative;
-	display: block;
-	padding: 5px 0;
-	background-color: rgb(143, 139, 139)
-}
-
-.container-navbar {
-	position: relative;
+	background-color: transparent;
+	padding: 10px;
+  }
+  
+  .wrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+  }
+  
+  .container-navbar {
 	display: grid;
-	grid-template-columns: repeat(10, minmax(0, 1fr));
-	grid-column: span 2 /span 2;
-}
-
-.container-navbar-left {
+	gap: 10px;
+	align-items: center;
+  }
+  
+  .searchbar-navbar {
+	flex-grow: 1;
+  }
+  
+  form {
 	display: flex;
-	justify-content: flex-start;
-	grid-column: span 4 / span 4;
-}
-.container-navbar-left > select:first-child {
-	margin-right: 10px;
-}
-.container-navbar-right {
-	display: flex;
-	justify-content: flex-end;
-	grid-column: span 4 / span 4;
-}
-.container-navbar-right > select:first-child {
-	margin-right: 10px;
-}
-
-.searchbar-navbar {
-	grid-column: span 2 / span 2;
-}
-
-.select-navbar{
-	border-radius: 2em;
-	text-align: center;
-	font-size: auto;
-}
+	gap: 10px;
+  }
+  
+  select {
+	background-color: rgba(200, 200, 200, 0.5);
+	border: none;
+	border-radius: 5px;
+	padding: 5px;
+  }
+  
+  /* Nuevos estilos para los botones */
+  form select {
+	margin-right: 5px;
+  }
+  
+  /* Ajustar otros estilos según sea necesario */
+  

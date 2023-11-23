@@ -1,35 +1,23 @@
-.paginado{
-    font-family: "Epilogue";
+.pagination-container {
 	display: flex;
-	flex-direction: row;
-	align-items: center;
-	height: 40px;
 	justify-content: center;
-	overflow: hidden;
-	padding: 0 50px;
-	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
-	font-size: 8px;}
-
-.button-paginate{
-	border-radius: 1em;
-	border-style:hidden;
-	text-align: center;
-	opacity: 80%;
-	background-color: rgb(235, 233, 233);
-	color: black;
-	font-family:  Google Sans,arial,sans-serif;
-	font-weight: bold;
-}
-
-.button-paginate:hover{
-	background-color: rgb(235, 233, 233);
-	color: rgb(95, 94, 94);
-		font-weight: bold;
-	}
-
-	.current-page {
-		font-size: 16px;
-		font-weight: bold;
-		margin: 0 50px;
-		color: #333;
-	  }
+	align-items: center;
+  }
+  
+  .pagination-buttons {
+	display: flex;
+	justify-content: space-between;
+	width: 100%; /* O ajusta este valor según tus necesidades */
+	max-width: 200px; /* O ajusta este valor según tus necesidades */
+  }
+  
+  button {
+	background: transparent;
+	color: #000;
+	border: none;
+	cursor: pointer;
+	font-size: 14px;
+  }
+  
+  /* Otros estilos según sea necesario */
+  

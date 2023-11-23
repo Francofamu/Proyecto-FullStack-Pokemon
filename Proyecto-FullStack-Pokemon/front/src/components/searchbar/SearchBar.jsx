@@ -26,16 +26,17 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="search-box">
-      <input
-        onChange={handleChange}
-        onBlur={handleBlur}
-        type="search"
-        placeholder="Pokemon name..."
-        value={name}
-      />
-      <button onClick={handleSearch}>Buscar</button>
-
+    <div className="Wrapper-searchBar">
+      <div className="search-box">
+        <input
+          onChange={handleChange}
+          onBlur={handleBlur}
+          type="search"
+          placeholder="Pokemon name..."
+          value={name}
+        />
+        <button onClick={handleSearch}>Search</button>
+      </div>
     </div>
   );
 };

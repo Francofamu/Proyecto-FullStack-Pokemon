@@ -1,22 +1,20 @@
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import Navbar from "../navbar/navbar"
 import "./header.css"
 
 const Nav = () => {
 
-    const handleHomeClick = () => {
-        // useDispatch(cleanFilteredDogs())
-    }
-    
     return(
         <div className="header">
             <div className="wrapper">
 
                 <div className="header-logo-home">
-                    <Link to="/home" className="header-button-home" onClick={handleHomeClick}>
+                    <Link to="/home" className="header-button-home" >
                         <img src="https://cdn.worldvectorlogo.com/logos/pokemon-23.svg" alt="pokeball"/>
                     </Link>
                 </div>
+
+                <Navbar className="navbar" />
 
                 <div className="header-logo-create">
                     <Link to="/create" className="header-button-create">
