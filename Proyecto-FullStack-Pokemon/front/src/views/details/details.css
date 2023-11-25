@@ -1,6 +1,6 @@
 .card-container-detail {
-  width: 300px; /* Ajusta el ancho según tus necesidades */
-  height: 400px; /* Ajusta el alto según tus necesidades */
+  width: 400px; /* Ajusta el ancho según tus necesidades */
+  height: auto; /* Ajusta el alto según tus necesidades */
   border: 4px solid rgb(221, 185, 83);
   border-radius: 10px;
   padding: 20px; /* Ajusta el relleno según tus necesidades */
@@ -9,24 +9,57 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  transition: transform 0.2s ease-in-out;
   margin: 50px auto; /* Agrega margen según tus necesidades */
 }
 
-.card-container-detail:hover {
-  transform: scale(1.1);
-}
-
 .head-detail-container {
+  margin-top: -15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: -webkit-fill-available
+}
+
+.id-detail{
+  background-color: rgb(173, 175, 175);
+  border-radius: 5px;
+  font-size: 30px;
+  text-align: center;
+  top: -15px;
+  position: relative;
+  height: 40px;
+  width: 40px;
+}
+
+.name-detail-container{
+  background-color: rgb(173, 175, 175);
+  border-radius: 5px;
+  padding: 7px;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 10px;
+
+}
+
+.pokeball-image-container{
+  top: -15px;
+  position: relative;
+  height: 30px;
+}
+
+.evolution-image{
+  display: flex;
+  position: relative;
+  height: 60px;
+  right: 30px;
+  top: 40px;
+  border:4px solid rgb(221, 185, 83);
+  background-color: rgb(221, 185, 83) ;
 }
 
 .image-container-detail {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
+  margin-top: -40px;
 }
 
 .detail-name {
@@ -35,8 +68,8 @@
 }
 
 .card-image-detail {
-  width: 200px; /* Ajusta el ancho según tus necesidades */
-  height: 200px; /* Ajusta el alto según tus necesidades */
+  width: 250px; /* Ajusta el ancho según tus necesidades */
+  height: 250px; /* Ajusta el alto según tus necesidades */
   border: 3px solid rgb(221, 185, 83);
   border-radius: 5px;
   background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTKSAv1wnfw_Gh4fQfLNiXT8jl7kes_iYl07XBwvdT2kur5J5xyLv2T1eoovLrxdkbErU&usqp=CAU");
@@ -44,18 +77,35 @@
   background-position: center;
 }
 
-.information-container-detail {
-  text-align: center;
-  margin-top: 10px; /* Ajusta el margen superior según tus necesidades */
-}
-
 .detail-types {
   font-size: 24px; /* Ajusta el tamaño de la fuente según tus necesidades */
   font-weight: bold;
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 
+.information-container-detail {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Corregido: quitado el espacio entre 'repeat' y los paréntesis */
+  grid-gap:  0px 20px;
+  text-align: center;
+  margin-top: 5px;
+  border-top: 1px solid
+}
+
+.information-container-detail-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Corregido: quitado el espacio entre 'repeat' y los paréntesis */
+  grid-gap:  5px 20px;
+  text-align: center;
+  margin-top: 5px;
+  border-top: 1px solid
+}
+
+
+
 .detail-info {
+
   font-size: 18px; /* Ajusta el tamaño de la fuente según tus necesidades */
   color: rgb(0, 0, 0);
 }

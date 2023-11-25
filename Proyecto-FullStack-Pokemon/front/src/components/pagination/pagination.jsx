@@ -1,5 +1,6 @@
 import "./pagination.css";
 
+
 const Pagination = ({ pokemonPage, Pokemons, pagination, page }) => {
 
     const pageNumbers = [];
@@ -11,29 +12,37 @@ const Pagination = ({ pokemonPage, Pokemons, pagination, page }) => {
   return (
   <div className="pagination-container">
     <div className="pagination-buttons">
-      <button
+      <button className="button-prev"
         style={page <= 1 ? { display: 'none' } : {}}
         onClick={() => pagination(page - 1)}
-      >
-        Prev
+        >
+        <span class="material-symbols-outlined">
+        arrow_back
+        </span>
       </button>
+
+      <div className="buttons-page-container">
+
       {pageNumbers &&
         pageNumbers.map((pageNumber) => (
           pageNumbers.length === 1 ? null : (
             <button
-              key={pageNumber}
-              style={
-                page === pageNumber
-                  ? { background: 'transparent', color: '#273314' }
-                  : {}
-              }
-              onClick={() => pagination(pageNumber)}
+            className="buttons-page"
+            key={pageNumber}
+            style={
+              page === pageNumber
+              ? { background: 'transparent' }
+              : {}
+            }
+            onClick={() => pagination(pageNumber)}
             >
               {pageNumber}
             </button>
           )
-        ))}
+          ))}
+      </div>
       <button
+      className="button-next"
         style={
           page >= pageNumbers.length
             ? { display: 'none' }
@@ -41,7 +50,9 @@ const Pagination = ({ pokemonPage, Pokemons, pagination, page }) => {
         }
         onClick={() => pagination(page + 1)}
       >
-        Next
+        <span class="material-symbols-outlined">
+        arrow_forward
+        </span>
       </button>
     </div>
   </div>

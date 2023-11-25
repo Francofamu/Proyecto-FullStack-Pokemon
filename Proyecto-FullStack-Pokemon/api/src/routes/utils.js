@@ -121,9 +121,40 @@ const getApiType = async () => {
   return allTypes;
 };
 
+const getEvolution = async () => {
+  try {
+    
+    const evolutionsPokemon = [];
+    const evolutionsPokemon2 = [];
+    const pokemonRequest = await axios.get("https://pokeapi.co/api/v2/evolution-chain?limit=20");
+    const urlPokemonSubrequest = pokemonRequest.data.results.map((pokemon) => pokemon.url);
+    
+    for (const url of urlPokemonSubrequest) {
+      const response = await axios.get(url);
+
+      evolutionsPokemon.push({
+        name: response.data.chain.species.name,
+        evolutionName: response.data.chain.evolves_to[0].species.name,
+      });
+      
+      if(response.data.chain.evolves_to[0].evolves_to[0]){
+        evolutionsPokemon2.push({
+        name: response.data.chain.evolves_to[0].species.name,
+        evolutionName: response.data.chain.evolves_to[0].evolves_to[0].species.name,
+      });}
+    }
+
+    return [...evolutionsPokemon, ...evolutionsPokemon2];
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
 module.exports = {
   getAllPokemons,
   getDbPokemons,
   getPokemonByNameOrId,
   getApiType,
+  getEvolution,
 };

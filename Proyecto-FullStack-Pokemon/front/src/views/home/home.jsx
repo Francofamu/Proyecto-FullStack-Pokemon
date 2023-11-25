@@ -6,7 +6,7 @@ import Header from "../../components/header/header"
 import Pagination from "../../components/pagination/pagination"
 import Cards from "../../components/cards/Cards";
 import "./home.css";
-import { getPokemons, getTypes, restore } from "../../redux/actions";
+import { getEvolutions, getPokemons, getTypes, restore } from "../../redux/actions";
 
 function Home() {
   const dispatch = useDispatch();
@@ -26,6 +26,7 @@ function Home() {
   useEffect(() => {
     dispatch(getPokemons());
     dispatch(getTypes());
+    dispatch(getEvolutions())
     return () => {
       dispatch(restore());
     };

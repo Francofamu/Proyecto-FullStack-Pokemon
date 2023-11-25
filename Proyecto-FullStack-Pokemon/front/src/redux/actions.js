@@ -21,6 +21,16 @@ export function getTypes(){
     }
 }
 
+export function getEvolutions(){
+    return async function(dispatch){
+        const evolutions = await axios.get('http://localhost:3001/evolutions');
+        return dispatch({
+            type: 'GET_EVOLUTIONS',
+            payload: evolutions.data
+        })
+    }
+}
+
 export function getPokemonByName(name){
     return async function(dispatch){
             const pokemon = await axios.get(`http://localhost:3001/pokemons?name=${name}`);

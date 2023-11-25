@@ -1,5 +1,5 @@
 export default function validations(input, pokemonNames) {
-    let errors = [];
+    let errors = {};
     let RegExpression = /^[a-zA-Z\s]*$/;
 
     if(!input.name) {
@@ -11,9 +11,13 @@ export default function validations(input, pokemonNames) {
     } else if(!RegExpression.test(input.name)) {
         errors.name = 'Special characters and numbers are not allowed'
     }
+    //  else if(input.types.length === 0) {
+    //     errors.types = 'You must choose at least one type!'
+        //  errors.types = `errorTypes:${input.types.length}`
+    // }
 
     if(input.hp === 0 || input.attack === 0 || input.defense === 0 || input.speed === 0 || input.height === 0 || input.weight === 0) {
-        errors.hp = 'Complete all stats!'
+        errors.data = 'Complete all stats!'
     }
 
     return errors

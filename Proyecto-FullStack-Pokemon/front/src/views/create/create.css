@@ -1,36 +1,96 @@
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.wrapper-form-container {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-label {
-  margin-bottom: 8px;
-  font-weight: bold;
+.title-form {
+  margin: -20px 0 10px;
+  text-align: center;
+}
+
+.form{
+  margin: 0 20px;
+  width: 700px;
+  display: inline-block;
+}
+
+.name-form{
+  height: 80px;
+  text-align: center;
+}
+.name-form input{
+  width: 40%;
+  margin: 0 90px;
+}
+
+.data-form-container {
+  height: 150px;
+  width: 600px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px 40px;
+}
+
+.types-form-container {
+  height: 150px;
+  width: 600px;
+}
+.types-form{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px 40px;
+}
+
+.types-form p{
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid
+}
+
+.close-button-form{
+  position: relative;
+  top: -2px;
+  left: 55px ;
 }
 
 .errors {
-  margin-top: auto;
   padding: auto;
-  font-size: small;
+  font-size: medium;
+  font-style: italic;
   color: red;
 }
 
-input {
+.image-form{
+  height: 0px;
   text-align: center;
-  margin: auto;
-  padding: auto;
+}
+.image-form input{
+  width: 50%;
+  margin: 0 40px;
 }
 
-.submitButton {
-  padding: 10px 20px;
-  margin-top: 15px;
-  background-color: #4caf50;
-  color: white;
+.profesor-oak-image {
+  position: relative;
+  top: -90px;
+}
+
+.button-form {
+  position: relative;
+  top:-20px;
+  left: 700px;
+  margin-top: 10px;
+  width: 40%;
+  padding: 10px;
+  background-color: #942c00;
+  color: #fff;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.submitButton:hover {
+.button-form:hover {
   background-color: #45a049;
 }

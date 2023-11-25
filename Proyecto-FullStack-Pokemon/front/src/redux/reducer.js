@@ -4,6 +4,7 @@ const initialState = {
     addedPokemons: [],
     types: [],
     details: [],
+    evolutions: [],
 }
 
 function rootReducer (state = initialState, action) {
@@ -21,6 +22,12 @@ function rootReducer (state = initialState, action) {
             return {
                 ...state,
                 types: action.payload,
+            }
+
+        case 'GET_EVOLUTIONS':
+            return {
+                ...state,
+                evolutions: action.payload,
             }
             
         case 'GET_POKEMON_BY_NAME':
