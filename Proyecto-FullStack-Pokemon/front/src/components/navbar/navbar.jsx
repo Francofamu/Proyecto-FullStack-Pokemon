@@ -9,7 +9,8 @@ const Navbar = ({ onSearch }) => {
   const dispatch = useDispatch();
   const types = useSelector((state) => state.types);
   const [selectedType, setSelectedType] = useState('');
-
+  // const [order, setOrder] = useState('');
+  
 
   const handleSort = (e) => {
     e.preventDefault();
@@ -20,14 +21,14 @@ const Navbar = ({ onSearch }) => {
   const handleFilterType = (e) => {
     e.preventDefault();
     dispatch(filterByType(e.target.value));
-    setOrder(`Filtered by Type: ${e.target.value}`);
+    // setOrder(`Filtered by Type: ${e.target.value}`);
     e.target.value= 'default';
 }
 
     const handleFilterByOrigin = (e) => {
     e.preventDefault();
     dispatch(filterByOrigin(e.target.value));
-    setOrder(`Filtered by Origin: ${e.target.value}`);
+    // setOrder(`Filtered by Origin: ${e.target.value}`);
     e.target.value= 'default';
 }
 

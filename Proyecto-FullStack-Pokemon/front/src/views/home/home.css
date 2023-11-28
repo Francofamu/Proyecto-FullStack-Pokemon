@@ -6,3 +6,8 @@ body{
     margin: 5px 5%;
 }
 
+.pokeball-loader{
+    text-align: center;
+    margin: 0 40%;
+    height: 200px;
+}

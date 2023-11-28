@@ -35,7 +35,7 @@
 
 .types-form-container {
   height: 150px;
-  width: 600px;
+  width: 350px;
 }
 .types-form{
   display: grid;
@@ -52,7 +52,7 @@
 .close-button-form{
   position: relative;
   top: -2px;
-  left: 55px ;
+  left: 15px ;
 }
 
 .errors {
@@ -93,4 +93,20 @@
 
 .button-form:hover {
   background-color: #45a049;
+}
+
+.created-menssage{
+  text-align: center;
+  margin: 90px 0 0 0;
+  color: #38b73e;
+}
+
+.types-image-container{
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.image-url{
+  height: 150px;
+  margin: 0 0 0 60px;
 }

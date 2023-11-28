@@ -165,24 +165,27 @@ const Create = () => {
                             {errors.data && (<p className="errors">{errors.data}</p>)}
                         </div>
 
-                        <div className="types-form-container">
-                            <select value='default' onChange={(event)=>handleSelect(event)}>
-                                <option disabled value='default'>Select Types</option>
-                                {
-                                    types.map((type)=>(<option value ={type.name} key={type.name}>{type.name.charAt(0).toUpperCase()+type.name.slice(1)}</option>))
-                                }
-                            </select>
+                        <div className="types-image-container">
 
-                            <div className="types-form">
-                                {input.types.map((selected)=>(
-                                    <div key={selected}>
-                                        <p>{selected.charAt(0).toUpperCase()+selected.slice(1)}<button className="close-button-form" id={selected} onClick={handleClick}>x</button></p>
-                                        
-                                    </div>
-                                    ))
-                                }
-                            </div>  
-                                {errors.types && (<p className="errors">{errors.types}</p>)}
+                            <div className="types-form-container">
+                                <select value='default' onChange={(event)=>handleSelect(event)}>
+                                    <option disabled value='default'>Select Types</option>
+                                    {
+                                        types.map((type)=>(<option value ={type.name} key={type.name}>{type.name.charAt(0).toUpperCase()+type.name.slice(1)}</option>))
+                                    }
+                                </select>
+                                <div className="types-form">
+                                    {input.types.map((selected)=>(
+                                        <div key={selected}>
+                                            <p>{selected.charAt(0).toUpperCase()+selected.slice(1)}<button className="close-button-form" id={selected} onClick={handleClick}>x</button></p>
+                                            
+                                        </div>
+                                        ))
+                                    }
+                                </div>  
+                                    {errors.types && (<p className="errors">{errors.types}</p>)}
+                            </div>
+                            {input.img && (<div><img className="image-url" src={input.img} alt='img not found'/></div>)}
                         </div>
 
 
@@ -192,13 +195,12 @@ const Create = () => {
                             alt='image not found'
                             value={input.img}
                             name= 'img'
-                            pattern="https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$"
+                            // pattern="https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$"
                             title="image URL"
                             placeholder=' paste url image...'
                             autoComplete='off'
                             spellCheck="false"
                             onChange={handleChange}/>
-                            {input.img && (<div><img src={input.img} alt='img not found'/></div>)}
                     </div>
 
                     {!create ? (
@@ -207,7 +209,7 @@ const Create = () => {
                         </button>
                     ) : (
                         <div>
-                        <h2>Pokemon created successfully</h2>
+                        <h2 className="created-menssage">Pokemon created successfully!!</h2>
                         <button className="button-form" onClick={() => setCreate(false)}>
                             Create Another Pokemon
                         </button>

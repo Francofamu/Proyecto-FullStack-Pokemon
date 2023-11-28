@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import Navbar from "../navbar/navbar"
+import { useDispatch } from "react-redux";
+import { restore } from "../../redux/actions";
+
 import "./header.css"
 
 const Nav = () => {
@@ -9,7 +12,7 @@ const Nav = () => {
             <div className="wrapper">
 
                 <div className="header-logo-home">
-                    <Link to="/home" className="header-button-home" >
+                    <Link to="/home" className="header-button-home" onClick={useDispatch(restore)} >
                         <img src="https://cdn.worldvectorlogo.com/logos/pokemon-23.svg" alt="pokeball"/>
                     </Link>
                 </div>

@@ -1,7 +1,15 @@
+import { useEffect } from "react";
+import {  useSelector } from "react-redux";
 import "./pagination.css";
 
 
 const Pagination = ({ pokemonPage, Pokemons, pagination, page }) => {
+  const filteredPokemons = useSelector((state) => state.filteredPokemons);
+
+  useEffect(() => {
+   pagination(1)
+    }, [filteredPokemons]);
+  
 
     const pageNumbers = [];
 
@@ -13,7 +21,7 @@ const Pagination = ({ pokemonPage, Pokemons, pagination, page }) => {
   <div className="pagination-container">
     <div className="pagination-buttons">
       <button className="button-prev"
-        style={page <= 1 ? { display: 'none' } : {}}
+        style={page <= 1 ? { visibility: 'hidden' } : {}}
         onClick={() => pagination(page - 1)}
         >
         <span class="material-symbols-outlined">
@@ -31,7 +39,7 @@ const Pagination = ({ pokemonPage, Pokemons, pagination, page }) => {
             key={pageNumber}
             style={
               page === pageNumber
-              ? { background: 'transparent' }
+              ? {fontWeight: 'bold' }
               : {}
             }
             onClick={() => pagination(pageNumber)}
@@ -45,7 +53,7 @@ const Pagination = ({ pokemonPage, Pokemons, pagination, page }) => {
       className="button-next"
         style={
           page >= pageNumbers.length
-            ? { display: 'none' }
+            ? { visibility: 'hidden' }
             : {}
         }
         onClick={() => pagination(page + 1)}

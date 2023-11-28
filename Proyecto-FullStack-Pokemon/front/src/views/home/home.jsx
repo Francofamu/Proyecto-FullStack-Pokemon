@@ -12,7 +12,6 @@ function Home() {
   const dispatch = useDispatch();
   const allPokemons = useSelector((state) => state.allPokemons);
   const filteredPokemons = useSelector((state) => state.filteredPokemons);
-  const types = useSelector((state) => state.types)
 
   // const [loadedPokemons /*, setLoadedPokemons*/] = useState(allPokemons.length ? true : false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -31,19 +30,20 @@ function Home() {
       dispatch(restore());
     };
   }, [dispatch]);
+  
 
   return (
     <div>
-      {/* <img src="https://66.media.tumblr.com/9697ebbc4887dc57620c50a12f24c61d/tumblr_nc1rokF7r31s1rd1xo1_500.gif"></img> */}
       
       <Header />
       <Pagination 
       pokemonPage={pokemonPage}
-      Pokemons={allPokemons.length}
+      Pokemons={filteredPokemons.length}
       pagination={pagination}
       page={currentPage}/>
       <div className="home">
-        <Cards allPokemons={currentPokemons} />
+      {allPokemons.length === 0 ? <img className="pokeball-loader" src="https://66.media.tumblr.com/9697ebbc4887dc57620c50a12f24c61d/tumblr_nc1rokF7r31s1rd1xo1_500.gif"></img> :
+        <Cards allPokemons={currentPokemons} />}
       </div>
     </div>
   );
