@@ -37,8 +37,10 @@ const Create = () => {
         });
         setErrors(validations({...input, [event.target.name] : event.target.value}, pokemonNames));
     }
-
+    
     function handleSelect(event) {
+        console.log(event)
+
         if(input.types.filter(type=> type === event.target.value).length) {
             input.types.pop();
         }
@@ -67,6 +69,8 @@ const Create = () => {
             setInput(initialForm)
         } 
     }
+
+    // console.log(errors.types)
 
     return(
 
@@ -168,7 +172,7 @@ const Create = () => {
                         <div className="types-image-container">
 
                             <div className="types-form-container">
-                                <select value='default' onChange={(event)=>handleSelect(event)}>
+                                <select value='default' onChange={(event) => { handleSelect(event); handleChange(); }} >
                                     <option disabled value='default'>Select Types</option>
                                     {
                                         types.map((type)=>(<option value ={type.name} key={type.name}>{type.name.charAt(0).toUpperCase()+type.name.slice(1)}</option>))
@@ -195,7 +199,6 @@ const Create = () => {
                             alt='image not found'
                             value={input.img}
                             name= 'img'
-                            // pattern="https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$"
                             title="image URL"
                             placeholder=' paste url image...'
                             autoComplete='off'

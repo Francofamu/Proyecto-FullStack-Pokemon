@@ -3,12 +3,10 @@ body{
     padding: 0;
 }
 .landing-page-image {
-    background-image: url('https://images.template.net/wp-content/uploads/2015/11/24201158/Pokemon-Style-Charactor-JPEG-Download.jpg');
+    background-image: url('https://www.anmosugoi.com/wp-content/uploads/2023/03/Pokemon.jpg');
     background-size: cover;
-    background-position: bottom;
-    height: 100vh;
-    
-    
+    background-position: center;
+    height: 100vh; 
 }
 
 .landing-page-button {
