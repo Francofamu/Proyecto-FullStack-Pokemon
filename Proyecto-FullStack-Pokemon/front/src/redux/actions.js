@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export function getPokemons(){
     return async function(dispatch){
-        const pokemons = await axios.get('http://localhost:3001/pokemons');
+        const pokemons = await axios.get('/pokemons');
         return dispatch({
             type: 'GET_POKEMONS',
             payload: pokemons.data
@@ -12,7 +12,7 @@ export function getPokemons(){
 
 export function getTypes(){
     return async function(dispatch){
-        const types = await axios.get('http://localhost:3001/types');
+        const types = await axios.get('/types');
         // console.log('Action getTypes (API o DB)--->', types.data)
         return dispatch({
             type: 'GET_TYPES',
@@ -23,7 +23,7 @@ export function getTypes(){
 
 export function getEvolutions(){
     return async function(dispatch){
-        const evolutions = await axios.get('http://localhost:3001/evolutions');
+        const evolutions = await axios.get('/evolutions');
         return dispatch({
             type: 'GET_EVOLUTIONS',
             payload: evolutions.data
@@ -33,7 +33,7 @@ export function getEvolutions(){
 
 export function getPokemonByName(name){
     return async function(dispatch){
-            const pokemon = await axios.get(`http://localhost:3001/pokemons?name=${name}`);
+            const pokemon = await axios.get(`/pokemons?name=${name}`);
             console.log(pokemon.data)
             return dispatch({
                 type: 'GET_POKEMON_BY_NAME',
@@ -68,7 +68,7 @@ export function orderBy(payload){
 export function getDetails(id){
     return async function(dispatch){
         try{
-            const pokemon = await axios.get(`http://localhost:3001/pokemons/${id}` );
+            const pokemon = await axios.get(`/pokemons/${id}` );
             return dispatch({
                 type: 'GET_DETAILS',
                 payload: pokemon.data
@@ -94,7 +94,7 @@ export function restore(){
 export function postPokemon(payload){
     return async function(dispatch){
         try{
-            await axios.post('http://localhost:3001/pokemons', payload);
+            await axios.post('/pokemons', payload);
             return dispatch({
                 type: 'POST_POKEMON',
             })

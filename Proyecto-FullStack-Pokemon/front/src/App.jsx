@@ -3,6 +3,8 @@ import LandingPage from './views/landingPage/landingPage';
 import Home from './views/home/home';
 import Detail from './views/details/details';
 import Create from './views/create/create'
+import axios from 'axios';
+axios.defaults.baseURL = "http://localhost:3001/"
 
 import { Routes, Route } from "react-router-dom";
 
