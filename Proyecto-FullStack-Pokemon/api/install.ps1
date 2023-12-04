@@ -1,1 +1,0 @@
-https://raw.githubusercontent.com/railwayapp/nixpacks/main/install.ps1
