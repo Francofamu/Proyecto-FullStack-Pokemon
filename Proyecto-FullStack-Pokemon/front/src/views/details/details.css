@@ -21,7 +21,7 @@
 }
 
 .id-detail{
-  background-color: rgb(173, 175, 175);
+  background-color: rgb(221 185 83 / 60%);
   border-radius: 5px;
   font-size: 30px;
   text-align: center;
@@ -32,7 +32,7 @@
 }
 
 .name-detail-container{
-  background-color: rgb(173, 175, 175);
+  background-color: rgb(221 185 83 / 60%);
   border-radius: 5px;
   padding: 7px;
   font-size: 30px;
@@ -53,8 +53,15 @@
   height: 60px;
   right: 30px;
   top: 40px;
-  border:4px solid rgb(221, 185, 83);
-  background-color: rgb(221, 185, 83) ;
+  border:4px rgb(221 185 83 / 80%);
+  background-color: rgb(221 185 83 / 80%) ;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.evolution-image:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(221, 185, 83, 1);
+  shape-outside: margin-box;
 }
 
 .image-container-detail {

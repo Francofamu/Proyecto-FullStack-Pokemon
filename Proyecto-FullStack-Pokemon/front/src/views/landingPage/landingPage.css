@@ -3,16 +3,16 @@ body{
     padding: 0;
 }
 .landing-page-image {
-    background-image: url('https://www.anmosugoi.com/wp-content/uploads/2023/03/Pokemon.jpg');
+    background-image: url('../../../assets/Fondo\ Pokemon.jpg');
     background-size: cover;
-    background-position: center;
+    background-position: top;
     height: 100vh; 
 }
 
 .landing-page-button {
     position: absolute;
     left: 160px;
-    bottom: 260px;
+    bottom: 100px;
     font-size: 50px;
     padding: 20px 40px;
     background-color: rgba(221, 226, 231, 0.5);
