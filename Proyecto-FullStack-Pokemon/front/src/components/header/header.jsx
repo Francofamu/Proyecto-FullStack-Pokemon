@@ -2,10 +2,13 @@ import { Link } from "react-router-dom";
 import Navbar from "../navbar/navbar"
 import { useDispatch } from "react-redux";
 import { restore } from "../../redux/actions";
+import { useLocation } from 'react-router-dom';
 
 import "./header.css"
 
 const Nav = () => {
+
+    const location = useLocation();
 
     return(
         <div className="header">
@@ -17,7 +20,7 @@ const Nav = () => {
                     </Link>
                 </div>
 
-                <Navbar className="navbar" />
+                {location.pathname === '/home' && <Navbar className="navbar" />}
 
                 <div className="header-logo-create">
                     <Link to="/create" className="header-button-create">
